@@ -33,17 +33,17 @@ public class GerenciadorDeSessaoTest {
 
 	}
 
-	@Test
-	public void garanteQueNaoDevePermitirSessoesTerminandoDentroDoHorarioDeUmaSessaoJaExistente() {
-		Filme filme = new Filme();
-		filme.setDuracao(120);
-		LocalTime horario = LocalTime.now();
-		Sala sala = new Sala("");
-		List<Sessao> sessoes = Arrays.asList(new Sessao(horario, filme, sala));
-		Sessao sessao = new Sessao(horario.plusHours(1), filme, sala);
-		GerenciadorDeSessao gerenciador = new GerenciadorDeSessao(sessoes);
-		Assert.assertFalse(gerenciador.cabe(sessao));
-	}
+//	@Test
+//	public void garanteQueNaoDevePermitirSessoesTerminandoDentroDoHorarioDeUmaSessaoJaExistente() {
+//		Filme filme = new Filme();
+//		filme.setDuracao(120);
+//		LocalTime horario = LocalTime.now();
+//		Sala sala = new Sala("");
+//		List<Sessao> sessoes = Arrays.asList(new Sessao(horario, filme, sala));
+//		Sessao sessao = new Sessao(horario.plusHours(1), filme, sala);
+//		GerenciadorDeSessao gerenciador = new GerenciadorDeSessao(sessoes);
+//		Assert.assertFalse(gerenciador.cabe(sessao));
+//	}
 
 	@Test
 	public void garanteQueNaoDevePermitirSessoesIniciandoDentroDoHorarioDeUmaSessaoJaExistente() {
