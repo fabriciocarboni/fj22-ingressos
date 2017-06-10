@@ -3,6 +3,8 @@ package br.com.caelum.ingresso.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import java.math.BigDecimal;
 import java.time.Duration;
 
 /**
@@ -17,7 +19,28 @@ public class Filme {
     private String nome;
     private Duration duracao;
     private String genero;
-    public Integer getId() {
+    private BigDecimal preco;
+    
+    /**
+     * @deprecated Este construtor somente é utilizado pelo Spring
+     * 
+     */
+    public Filme(){}
+
+
+	public Filme(String nome, Duration duracao, String genero, BigDecimal preco) {
+		super();
+		this.nome = nome;
+		this.duracao = duracao;
+		this.genero = genero;
+		this.preco = preco;
+	}
+
+
+
+
+
+	public Integer getId() {
         return id;
     }
 
@@ -48,4 +71,12 @@ public class Filme {
     public void setGenero(String genero) {
         this.genero = genero;
     }
+    
+    public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+    
+    public BigDecimal getPreco() {
+		return preco;
+	}
 }

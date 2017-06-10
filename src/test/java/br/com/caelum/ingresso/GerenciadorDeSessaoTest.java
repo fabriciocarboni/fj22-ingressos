@@ -1,5 +1,7 @@
 package br.com.caelum.ingresso;
 
+import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
@@ -18,11 +20,11 @@ public class GerenciadorDeSessaoTest {
 	@Test
 	public void garanteQueNaoDevePermitirSessaoNoMesmoHorario() {
 
-		Filme filme = new Filme();
+		Filme filme = new Filme("RogueOne",Duration.ofMinutes(120),	"SCI-FI",BigDecimal.ONE);
 		filme.setDuracao(120);
 		LocalTime horario = LocalTime.now();
 
-		Sala sala = new Sala("");
+		Sala sala = new Sala("",BigDecimal.ONE);
 		List<Sessao> sessoes = Arrays.asList(new Sessao(horario, sala, filme));
 
 		Sessao sessao = new Sessao(horario, sala, filme);
@@ -47,10 +49,10 @@ public class GerenciadorDeSessaoTest {
 
 	@Test
 	public void garanteQueNaoDevePermitirSessoesIniciandoDentroDoHorarioDeUmaSessaoJaExistente() {
-		Filme filme = new Filme();
+		Filme filme = new Filme("RogueOne",Duration.ofMinutes(120),	"SCI-FI",BigDecimal.ONE);
 		filme.setDuracao(120);
 		LocalTime horario = LocalTime.now();
-		Sala sala = new Sala("");
+		Sala sala = new Sala("",BigDecimal.ONE);
 		List<Sessao> sessoesDaSala = Arrays.asList(new Sessao(horario, sala, filme));
 		GerenciadorDeSessao gerenciador = new GerenciadorDeSessao(sessoesDaSala);
 		Assert.assertFalse(gerenciador.cabe(new Sessao(horario.plus(1, ChronoUnit.HOURS), sala, filme)));
@@ -58,12 +60,12 @@ public class GerenciadorDeSessaoTest {
 
 	@Test
 	public void garanteQueDevePermitirUmaInsercaoEntreDoisFilmes() {
-		Sala sala = new Sala("");
-		Filme filme1 = new Filme();
+		Sala sala = new Sala("",BigDecimal.ONE);
+		Filme filme1 = new Filme("RogueOne",Duration.ofMinutes(120),"SCI-FI",BigDecimal.ONE);
 		filme1.setDuracao(90);
 		LocalTime dezHoras = LocalTime.parse("10:00:00");
 		Sessao sessaoDasDez = new Sessao(dezHoras, sala, filme1);
-		Filme filme2 = new Filme();
+		Filme filme2 = new Filme("RogueOne",Duration.ofMinutes(120),"SCI-FI",BigDecimal.ONE);
 		filme2.setDuracao(120);
 		LocalTime dezoitoHoras = LocalTime.parse("18:00:00");
 		Sessao sessaoDasDezoito = new Sessao(dezoitoHoras, sala, filme2);
@@ -71,5 +73,6 @@ public class GerenciadorDeSessaoTest {
 		GerenciadorDeSessao gerenciador = new GerenciadorDeSessao(sessoes);
 		Assert.assertTrue(gerenciador.cabe(new Sessao(LocalTime.parse("13:00:00"), sala, filme2)));
 	}
+
 
 }

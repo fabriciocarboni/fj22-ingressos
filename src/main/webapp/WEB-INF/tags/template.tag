@@ -24,6 +24,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="/">Ingresso</a>
+	
 			</div>
 
 
@@ -34,6 +35,7 @@
 
 					<li><a href="/filmes">Filmes</a></li>
 					<li><a href="/salas">Salas</a></li>
+					<li><a	href="/filme/em-cartaz">Comprar</a></li>
 
 
 					<sec:authorize access="!isAuthenticated()">
