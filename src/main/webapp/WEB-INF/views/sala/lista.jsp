@@ -21,15 +21,22 @@
 		<tr>
 			<td class="text-center">${sala.nome}</td>
 			<td class="text-center">${sala.preco}</td>
-			<td class="col-md-1">
-				<a href="/sala/${sala.id}/sessoes/"class="btn btn-primary">
-					<spanclass ="glyphiconglyphicon-blackboard" aria-hidden="true"></span>Sessões</a>
-			</td>
-				<td class="col-md-1">class="btn	btn-warning">aria-hidden="true"></span>	Lugares</a>
-			</td>
-			
-			<td>class="btn	btn-danger">Excluir</a></td>
-			<td>class="btn	btn-info">Alterar</a></td>
+			                    <td class="col-md-1">
+                        <a href="/sala/${sala.id}/sessoes/" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Sessões
+                        </a>
+                    </td>
+                    <td class="col-md-1">
+                        <a href="/sala/${sala.id}/lugares/" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-th" aria-hidden="true"></span> Lugares
+                        </a>
+                    </td>
+                    <td>
+                        <a onclick="excluir(${sala.id})" class="btn btn-danger">Excluir</a>
+                    </td>
+                    <td>
+                        <a href="/sala/${sala.id}" class="btn btn-info">Alterar</a>
+
 		</tr>
 	</c:forEach>
 

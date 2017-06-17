@@ -15,8 +15,4 @@ public class ImagemCapa {
 		this.url =	url;
 	}
 	
-	
-	
-	
-	
 }
